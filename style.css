@@ -13,6 +13,7 @@ body {
   padding-bottom: 80px; 
 }
 
+
 /* TITRE PRINCIPAL */
 .titre {
   display: flex;
@@ -156,30 +157,75 @@ body {
   width: 400px;         
   height: 400px;        
   background-image: 
-    radial-gradient(circle, transparent 25%, #65bed0 80%), 
-    url('https://i.postimg.cc/G37QsMK5/VS.png');
-  background-size: 210px;
+    url('https://i.postimg.cc/76kn4sxT/wmremove-transformed-2-removebg-preview.png');
+  background-size: 310px;
   background-repeat: no-repeat;
   background-position: center;
-  pointer-events: none;
 }
 
-/* ====== HISTORIQUE DES MATCHS ====== */
-.historique {
-  font-size: 38px;             
-  font-weight: 900;
-  margin: 20px auto; 
+/* ====== CONTENEUR MAGIQUE DES BANDES (PLEIN ÉCRAN) ====== */
+.conteneur-historique {
   position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding: 25px 0;
+  overflow: hidden;
+}
+
+/* Grosse bande orange principale */
+.conteneur-historique::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  width: 110%;
+  height: 45px;
+  background: #ff6b00;
+  transform: translateY(-50%) rotate(-2.5deg);
   z-index: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Petite bande orange secondaire */
+.conteneur-historique::after {
+  content: "";
+  position: absolute;
+  top: calc(50% + 26px);
+  left: -5%;
+  width: 110%;
+  height: 10px;
+  background: #ffa500;
+  transform: translateY(-50%) rotate(-2deg);
+  z-index: 1;
+}
+
+/* ====== TITRE HISTORIQUE DES MATCHS ====== */
+.historique {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background: #143241;
   color: white;
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  padding: 8px 25px;
+  border-radius: 8px;
+  border: 2px solid white;
+  text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin: 0 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 #historique {
   list-style: none;
   padding: 0;
   max-width: 450px;            
-  margin: 0 auto;    
+  margin: -5px auto 0;    
   font-size: 30px;
 }
 
@@ -376,7 +422,7 @@ body {
   border-color: #7ce4f9;
 }
 
-/* 1. Le fond qui couvre tout l'écran (doit être en display: none au début) */
+/* 1. Le fond qui couvre tout l'écran */
 #customConfirm {
   backdrop-filter: blur(5px);
   display: none; 
@@ -385,8 +431,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Ombre noire transparente sur tout l'écran */
-  z-index: 9999; /* Pour passer au-dessus de TOUT le reste */
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: 9999; 
   justify-content: center;
   align-items: center;
 }
@@ -396,14 +442,11 @@ body {
   width: 320px;
   height: 180px;
   border-radius: 20px;
-  
-  /* AJOUT : On centre le contenu à l'intérieur pour éviter que ça touche les bords */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px; 
-
 }
 
 /* 3. Le texte de la question */
@@ -412,7 +455,7 @@ body {
   font-weight: bold;
   color: #8A1921;
   font-size: 20px;
-  margin-bottom: 20px; /* AJOUT : Retire les marges par défaut qui décalent le texte vers le bas */
+  margin-bottom: 20px; 
 }
 
 /* 5. Le bouton Annuler */
@@ -421,12 +464,12 @@ body {
   font-weight: 600;
   background-color: rgb(110, 108, 108);
   border-radius: 10px;
-  width: 110px;  /* CORRECTION : Légèrement rétréci pour que ça rentre sans forcer */
-  height: 50px;  /* CORRECTION : Ajusté pour l'espace */
+  width: 110px;  
+  height: 50px;  
   color: white;
   font-size: 15px;
   text-align: center;
-  border: none;  /* AJOUT : Retire la bordure noire moche par défaut */
+  border: none;  
   cursor: pointer;
 }
 
@@ -436,12 +479,12 @@ body {
   font-weight: 600;
   background-color: rgb(255, 53, 53);
   border-radius: 10px;
-  width: 110px;  /* CORRECTION : Même largeur qu'Annuler */
-  height: 50px;  /* CORRECTION : Même hauteur */
+  width: 110px;  
+  height: 50px;  
   color: white;
   font-size: 15px;
   text-align: center;
-  border: none;  /* AJOUT : Retire la bordure */
+  border: none;  
   cursor: pointer;
 }
 
@@ -449,5 +492,65 @@ body {
 .confirm-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Espace entre les deux boutons */
+  gap: 15px; 
 }
+
+.imagetrophees{
+  width: 50px;
+  margin: 10px 10px 0px 10px;
+  border-radius: 5px;
+}
+
+.bouton-trophees{
+  z-index: 9999;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  background-color: #8A1921;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.textetrophees{
+  font-size: 50px;
+  margin: 0px 10px 10px 10px;
+}
+
+#trophees {
+  margin-top: 60px;
+  /* On passe de 50% à 68% pour faire monter le noir pile sous la bande orange */
+ 
+  margin-bottom: -80px;      
+  padding-bottom: 120px;     
+}
+
+/* Force la grande bande orange à se caler pile au niveau du texte */
+#trophees::before {
+  top: 52px !important;
+  transform: translateY(-50%) rotate(-2.5deg) !important;
+}
+
+/* Force la petite bande orange à suivre juste en dessous */
+#trophees::after {
+  top: 78px !important; 
+  transform: translateY(-50%) rotate(-2deg) !important;
+}
+
+.zone-sombre {
+  position: relative;
+
+}
+
+.zone-sombre::before {
+  width: 500%;
+  content: '';
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  pointer-events: none;
+  backdrop-filter: brightness(50%);
+  transform: rotate(-2deg)
+translateY(40px)
+translateX(-400px);
+  transform-origin: center;
