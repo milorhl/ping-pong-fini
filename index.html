@@ -1,163 +1,303 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=950">
+
   <title>Compteur Ping-Pong</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
+
   <a href="#trophees" class="bouton-trophees">
+
     <img class="imagetrophees" src="https://i.postimg.cc/vTj6gtpg/coupe-pingpong.jpg" alt="Trophées">
+
     <p class="textetrophees">⬇️</p>
-  </a> 
+
+  </a>
+
 
   <div class="titre">
+
     <h1 class="PINGPONG">PING PONG</h1>
+
   </div>
+
 
   <button class="bouton" id="mainActionBtn">AJOUTER UN MATCH</button>
 
+
   <div class="popup-match" id="popupMatch">
+
     <button id="btnMilo">Milo</button>
+
     <button id="btnMatchEnCours">En Live ⏳</button>
+
     <button id="btnGuillaume">Guillaume</button>
+
   </div>
+
 
   <div class="score">
 
+
     <div class="milo">
+
       <h2 class="nom"><span id="nomMilo">Milo</span></h2>
+
       <p class="score2" id="scoreMilo">0</p>
 
+
       <div class="streak-flame" id="flameMilo" style="display:none;">
+
         <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" class="flame-svg">
+
           <ellipse cx="50" cy="72" rx="48" ry="44" fill="rgba(160,230,255,0.45)" />
+
           <path d="M50 5 C50 5, 95 45, 95 72 C95 95, 75 112, 50 112 C25 112, 5 95, 5 72 C5 45, 50 5, 50 5 Z" fill="#1a1a1a"/>
+
           <path d="M50 13 C50 13, 88 50, 88 72 C88 92, 70 105, 50 105 C30 105, 12 92, 12 72 C12 50, 50 13, 50 13 Z" fill="url(#gradRouge)"/>
+
           <ellipse cx="50" cy="76" rx="26" ry="28" fill="url(#gradJaune)"/>
+
           <g transform="translate(74, 30)">
+
             <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#FFD700"/>
+
           </g>
+
           <g transform="translate(70, 58)">
+
             <polygon points="0,-5 1.5,-1.5 5,0 1.5,1.5 0,5 -1.5,1.5 -5,0 -1.5,-1.5" fill="#FFD700"/>
+
           </g>
+
           <text id="streakTextMilo" x="50" y="85" text-anchor="middle" dominant-baseline="middle"
+
             font-family="'Nunito', sans-serif" font-weight="900" font-size="30"
+
             fill="white" stroke="#b35000" stroke-width="3" paint-order="stroke">
+
             2
+
           </text>
+
           <defs>
+
             <radialGradient id="gradRouge" cx="50%" cy="60%" r="55%">
+
               <stop offset="0%" stop-color="#ff6a00"/>
+
               <stop offset="100%" stop-color="#e8001c"/>
+
             </radialGradient>
+
             <radialGradient id="gradJaune" cx="50%" cy="45%" r="65%">
+
               <stop offset="0%" stop-color="#fff176"/>
+
               <stop offset="100%" stop-color="#ffd600"/>
+
             </radialGradient>
+
           </defs>
+
         </svg>
+
       </div>
+
     </div>
+
 
     <div class="Guillaume">
+
       <h2 class="nom"><span id="nomGuillaume">Guillaume</span></h2>
+
       <p class="score2" id="scoreGuillaume">0</p>
 
+
       <div class="streak-flame streak-flame-guillaume" id="flameGuillaume" style="display:none;">
+
         <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" class="flame-svg">
+
           <ellipse cx="50" cy="72" rx="48" ry="44" fill="rgba(160,230,255,0.45)" />
+
           <path d="M50 5 C50 5, 95 45, 95 72 C95 95, 75 112, 50 112 C25 112, 5 95, 5 72 C5 45, 50 5, 50 5 Z" fill="#1a1a1a"/>
+
           <path d="M50 13 C50 13, 88 50, 88 72 C88 92, 70 105, 50 105 C30 105, 12 92, 12 72 C12 50, 50 13, 50 13 Z" fill="url(#gradRouge2)"/>
+
           <ellipse cx="50" cy="76" rx="26" ry="28" fill="url(#gradJaune2)"/>
+
           <g transform="translate(74, 30)">
+
             <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#FFD700"/>
+
           </g>
+
           <g transform="translate(70, 58)">
+
             <polygon points="0,-5 1.5,-1.5 5,0 1.5,1.5 0,5 -1.5,1.5 -5,0 -1.5,-1.5" fill="#FFD700"/>
+
           </g>
+
           <text class="texteFlame" id="streakTextGuillaume" x="50" y="85" text-anchor="middle" dominant-baseline="middle"
+
             font-family="'Nunito', sans-serif" font-weight="900" font-size="30"
+
             fill="white" stroke="#b35000" stroke-width="3" paint-order="stroke">
+
             2
+
           </text>
+
           <defs>
+
             <radialGradient id="gradRouge2" cx="50%" cy="60%" r="55%">
+
               <stop offset="0%" stop-color="#ff6a00"/>
+
               <stop offset="100%" stop-color="#e8001c"/>
+
             </radialGradient>
+
             <radialGradient id="gradJaune2" cx="45%" cy="45%" r="65%">
+
               <stop offset="0%" stop-color="#fff176"/>
+
               <stop offset="100%" stop-color="#ffd600"/>
+
             </radialGradient>
+
           </defs>
+
         </svg>
+
       </div>
+
     </div>
 
+
   </div>
+
 
   <div class="zone-sombre">
 
+
     <div class="conteneur-historique">
+
       <div class="historique">Historique des matchs</div>
+
     </div>
-    
+
+   
+
     <ul id="historique"></ul>
+
   </div>
 
-  <!-- Section Trophées -->
-  <div id="trophees" class="conteneur-historique">
-    <div class="historique">Trophées</div>
-  </div>
 
-  
+  <!-- Section Trophées 
+
+  <div class="zone-sombre-trophees">
+    <div id="trophees" class="conteneur-historique">
+      <div class="historique">Trophées</div>
+    </div>
+  </div> -->
+
+ 
+
 
   <div class="modal" id="modal">
+
     <div class="modalContent" id="modalContent">
+
       <h2 id="modalTitle">Entrer le score</h2>
 
+
       <div id="gagnantRow">
+
         <p>Qui a gagné le match ?</p>
+
         <div class="choixGagnantModal">
+
           <button type="button" id="modalSelectMilo">Milo</button>
+
           <button type="button" id="modalSelectGuillaume">Guillaume</button>
+
         </div>
+
       </div>
+
 
       <p id="scoreLabel">Indique le score final :</p>
+
       <div class="inputWrapper">
+
         <input type="text" id="scoreInput" placeholder="Ex: 5-3">
+
       </div>
+
 
       <div class="toggleContainer" id="toggleRow">
+
         <span class="toggleLabel">Match toujours en cours ?</span>
+
         <label class="switch">
+
           <input type="checkbox" id="enCoursToggle">
+
           <span class="slider"></span>
+
         </label>
+
       </div>
+
 
       <div class="modalButtons">
+
         <button id="valider">Valider</button>
+
         <button id="fermer">Annuler</button>
+
       </div>
+
     </div>
+
   </div>
+
 
   <script type="module" src="script.js"></script>
-  
+
+ 
+
   <div id="customConfirm" class="confirm-modal">
+
     <div class="confirm-content">
+
       <p>Supprimer ce match ?</p>
+
       <div class="confirm-buttons">
+
         <button id="confirmCancel">ANNULER</button>
+
         <button id="confirmConfirm">SUPPRIMER</button>
+
       </div>
+
     </div>
+
   </div>
 
+
 </body>
-</html>
+
+</html> 
