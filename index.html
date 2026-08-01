@@ -8,6 +8,11 @@
 </head>
 <body>
 
+  <a href="#trophees" class="bouton-trophees">
+    <img class="imagetrophees" src="https://i.postimg.cc/vTj6gtpg/coupe-pingpong.jpg" alt="Trophées">
+    <p class="textetrophees">⬇️</p>
+  </a> 
+
   <div class="titre">
     <h1 class="PINGPONG">PING PONG</h1>
   </div>
@@ -25,7 +30,7 @@
     <div class="milo">
       <h2 class="nom"><span id="nomMilo">Milo</span></h2>
       <p class="score2" id="scoreMilo">0</p>
-      
+
       <div class="streak-flame" id="flameMilo" style="display:none;">
         <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" class="flame-svg">
           <ellipse cx="50" cy="72" rx="48" ry="44" fill="rgba(160,230,255,0.45)" />
@@ -60,7 +65,7 @@
     <div class="Guillaume">
       <h2 class="nom"><span id="nomGuillaume">Guillaume</span></h2>
       <p class="score2" id="scoreGuillaume">0</p>
-      
+
       <div class="streak-flame streak-flame-guillaume" id="flameGuillaume" style="display:none;">
         <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" class="flame-svg">
           <ellipse cx="50" cy="72" rx="48" ry="44" fill="rgba(160,230,255,0.45)" />
@@ -94,13 +99,26 @@
 
   </div>
 
-  <div class="historique">Historique des matchs</div>
-  <ul id="historique"></ul>
+  <div class="zone-sombre">
+
+    <div class="conteneur-historique">
+      <div class="historique">Historique des matchs</div>
+    </div>
+    
+    <ul id="historique"></ul>
+  </div>
+
+  <!-- Section Trophées -->
+  <div id="trophees" class="conteneur-historique">
+    <div class="historique">Trophées</div>
+  </div>
+
+  
 
   <div class="modal" id="modal">
     <div class="modalContent" id="modalContent">
       <h2 id="modalTitle">Entrer le score</h2>
-      
+
       <div id="gagnantRow">
         <p>Qui a gagné le match ?</p>
         <div class="choixGagnantModal">
@@ -113,7 +131,7 @@
       <div class="inputWrapper">
         <input type="text" id="scoreInput" placeholder="Ex: 5-3">
       </div>
-      
+
       <div class="toggleContainer" id="toggleRow">
         <span class="toggleLabel">Match toujours en cours ?</span>
         <label class="switch">
@@ -130,14 +148,16 @@
   </div>
 
   <script type="module" src="script.js"></script>
+  
   <div id="customConfirm" class="confirm-modal">
-  <div class="confirm-content">
-    <p>Supprimer ce match ?</p>
-    <div class="confirm-buttons">
-      <button id="confirmCancel">ANNULER</button>
-      <button id="confirmConfirm">SUPPRIMER</button>
+    <div class="confirm-content">
+      <p>Supprimer ce match ?</p>
+      <div class="confirm-buttons">
+        <button id="confirmCancel">ANNULER</button>
+        <button id="confirmConfirm">SUPPRIMER</button>
+      </div>
     </div>
   </div>
-</div>
+
 </body>
 </html>
