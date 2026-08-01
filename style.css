@@ -1,556 +1,1542 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght=600;800;900&display=swap');
 
+
+
 html{
+
+
   scroll-behavior: smooth;
+
+
 }
+
+
 body {
+
+
   font-family: 'Nunito', sans-serif;
+
+
   text-align: center;
+
+
   background-color: #65bed0;
-  width: 950px;         
-  margin: 0 auto;       
-  position: relative;   
-  padding-bottom: 80px; 
+
+
+  width: 950px;        
+
+
+  margin: 0 auto;      
+
+
+  position: relative;  
+
+
+  padding-bottom: 0px;
+
+
 }
+
+
 
 
 /* TITRE PRINCIPAL */
+
+
 .titre {
+
+
   display: flex;
-  flex-direction: column; 
+
+
+  flex-direction: column;
+
+
   align-items: center;
+
+
 }
+
+
 
 .PINGPONG {
+
+
   font-family: 'Bebas Neue', sans-serif;
+
+
   font-size: 110px;
+
+
   letter-spacing: 8px;
+
+
   color: white;
+
+
   text-shadow: 4px 4px 0px rgba(0,0,0,0.25),
+
+
                0 0 40px rgba(255,255,255,0.2);
+
+
   display: inline-block;
+
+
   line-height: 1;
+
+
   margin-top: 30px;
-  margin-bottom: 20px; 
+
+
+  margin-bottom: 20px;
+
+
 }
+
+
 
 .PINGPONG::after {
+
+
   content: '';
+
+
   display: block;
+
+
   width: 60%;
+
+
   height: 4px;
+
+
   background: linear-gradient(90deg, transparent, white, transparent);
+
+
   margin: 8px auto 0;
+
+
   border-radius: 2px;
+
+
   opacity: 0.7;
+
+
 }
+
+
 
 /* ====== BOUTON AJOUTER MATCH DESIGN ====== */
+
+
 .bouton {
+
+
   display: inline-block;
+
+
   position: relative;          
-  margin-bottom: 30px;         
+
+
+  margin-bottom: 30px;        
+
+
   width: 220px;
+
+
   height: 50px;
-  background: #143241;         
-  border: 2px solid white;     
-  border-radius: 12px;         
+
+
+  background: #143241;        
+
+
+  border: 2px solid white;    
+
+
+  border-radius: 12px;        
+
+
   color: white;
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 900;
+
+
   font-size: 16px;
+
+
   letter-spacing: 0.5px;
+
+
   cursor: pointer;
+
+
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s; 
+
+
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+
 }
+
+
 
 .bouton:hover {
-  background: white;           
+
+
+  background: white;          
+
+
   color: #143241;
+
+
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+
 }
+
+
 
 /* ÉTAT REPRENDRE MATCH (ORANGE) */
+
+
 .bouton.reprendre {
+
+
   background: #e67e22;
+
+
   border-color: #f39c12;
+
+
 }
+
+
 .bouton.reprendre:hover {
+
+
   background: white;
+
+
   color: #e67e22;
+
+
 }
+
+
 
 /* ====== POPUP TRIPLE CHOIX HORIZONTAL ====== */
+
+
 .popup-match {
+
+
   display: none;
+
+
   position: absolute;
+
+
   top: 220px;                  
+
+
   left: 50%;
-  transform: translateX(-50%); 
+
+
+  transform: translateX(-50%);
+
+
   background: rgba(20, 50, 65, 0.95);
+
+
   padding: 12px;
-  border-radius: 12px;         
+
+
+  border-radius: 12px;        
+
+
   border: 2px solid rgba(255, 255, 255, 0.1);
+
+
   z-index: 1000;
+
+
   flex-direction: row;
+
+
   gap: 12px;
+
+
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+
   animation: popupFade 0.2s ease-out;
+
+
 }
+
+
 
 .popup-match button {
+
+
   width: 110px;
+
+
   height: 45px;
+
+
   border: none;
+
+
   border-radius: 8px;
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 900;
+
+
   font-size: 15px;
+
+
   cursor: pointer;
+
+
   transition: transform 0.1s, background-color 0.2s;
+
+
 }
 
-#btnMilo { background-color: lightcoral; color: white; }
-#btnMatchEnCours { background-color: #bdc3c7; color: #2c3e50; } 
+
+
+#btnMilo { background-color: #E30B5D; color: white; }
+
+
+#btnMatchEnCours { background-color: #bdc3c7; color: #2c3e50; }
+
+
 #btnGuillaume { background-color: rgb(77, 176, 77); color: white; }
 
+
+
 .popup-match button:hover { background-color: white; color: #143241; }
+
+
 .popup-match button:active { transform: scale(0.95); }
 
+
+
 /* SCORES & CADRES PLAYER */
+
+
 .score {
+
+
   font-family: 'Courier New', monospace;
+
+
   display: flex;
+
+
   font-weight: bold;
+
+
   position: relative;
+
+
   height: 320px;        
+
+
   margin-bottom: 60px;  
+
+
 }
+
+
 
 .score div:not(.streak-flame) {
+
+
   background: rgba(255,255,255,0.5);
+
+
   padding: 25px;
+
+
   border-radius: 12px;
+
+
 }
+
+
 
 .milo { position: absolute; left: 20px; width: 200px; overflow: visible; }
+
+
 .Guillaume { position: absolute; right: 20px; width: 200px; overflow: visible; }
+
+
 .nom { font-size: 40px; }
 
+
+
 .score2 {
+
+
   font-size: 52px;
+
+
   font-weight: 900;
+
+
   background: rgba(255,255,255,0.35);
+
+
   border-radius: 12px;
+
+
   padding: 6px 0;
+
+
   line-height: 1;
+
+
 }
+
+
 
 /* L'IMAGE DU VS */
+
+
 .score::after {
+
+
   content: '';
+
+
   position: absolute;
+
+
   left: 50%;
+
+
   top: 57%;
+
+
   transform: translate(-50%, -50%);
-  width: 400px;         
+
+
+  width: 400px;        
+
+
   height: 400px;        
-  background-image: 
+
+
+  background-image:
+
+
     url('https://i.postimg.cc/76kn4sxT/wmremove-transformed-2-removebg-preview.png');
+
+
   background-size: 310px;
+
+
   background-repeat: no-repeat;
+
+
   background-position: center;
+
+
 }
+
+
 
 /* ====== CONTENEUR MAGIQUE DES BANDES (PLEIN ÉCRAN) ====== */
+
+
 .conteneur-historique {
+
+
   position: relative;
+
+
   width: 100vw;
+
+
   left: 50%;
+
+
   transform: translateX(-50%);
+
+
   margin-top: 10px;
+
+
   margin-bottom: 25px;
+
+
   padding: 25px 0;
+
+
   overflow: hidden;
+
+
 }
+
+
 
 /* Grosse bande orange principale */
+
+
 .conteneur-historique::before {
+
+
   content: "";
+
+
   position: absolute;
+
+
   top: 50%;
+
+
   left: -5%;
+
+
   width: 110%;
+
+
   height: 45px;
+
+
   background: #ff6b00;
-  transform: translateY(-50%) rotate(-2.5deg);
+
+
+  transform: translateY(-50%) rotate(-0.5deg);
+
+
   z-index: 1;
+
+
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+
 }
+
+
 
 /* Petite bande orange secondaire */
+
+
 .conteneur-historique::after {
+
+
   content: "";
+
+
   position: absolute;
+
+
   top: calc(50% + 26px);
+
+
   left: -5%;
+
+
   width: 110%;
+
+
   height: 10px;
+
+
   background: #ffa500;
-  transform: translateY(-50%) rotate(-2deg);
+
+
+  transform: translateY(-50%) rotate(0deg);
+
+
   z-index: 1;
+
+
 }
+
+
 
 /* ====== TITRE HISTORIQUE DES MATCHS ====== */
+
+
 .historique {
+
+
   position: relative;
+
+
   z-index: 2;
+
+
   display: inline-block;
+
+
   background: #143241;
+
+
   color: white;
+
+
   padding: 8px 25px;
+
+
   border-radius: 8px;
+
+
   border: 2px solid white;
+
+
   text-transform: uppercase;
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 900;
+
+
   font-size: 32px;
+
+
   letter-spacing: 1px;
+
+
   margin: 0 !important;
+
+
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+
 }
+
+
 
 #historique {
+
+
   list-style: none;
+
+
   padding: 0;
+
+
   max-width: 450px;            
+
+
   margin: -5px auto 0;    
+
+
   font-size: 30px;
+
+
 }
+
+
 
 .victoireMilo, .victoireGuillaume, .match-en-cours-item {
+
+
   color: white;
+
+
   font-weight: bold;
+
+
   animation: slideIn 0.25s ease both;
+
+
   border-radius: 10px;
+
+
   margin-bottom: 10px;
+
+
   padding: 10px 0;
+
+
   position: relative;
+
+
 }
 
-.victoireMilo { background-color: lightcoral; }
+
+
+.victoireMilo { background-color: #E30B5D; }
+
+
 .victoireGuillaume { background-color: rgb(77, 176, 77); }
 
+
+
 .match-en-cours-item {
-  background-color: #bdc3c7; 
+
+
+  background-color: #bdc3c7;
+
+
   border: 3px dashed rgba(255, 255, 255, 0.9);
+
+
   overflow: hidden;
-  color: #2c3e50; 
+
+
+  color: #2c3e50;
+
+
 }
+
+
 
 .match-en-cours-item::before {
+
+
   content: '';
+
+
   position: absolute;
+
+
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.45); 
+
+
+  background-color: rgba(255, 255, 255, 0.45);
+
+
   z-index: 0;
+
+
   pointer-events: none;
+
+
 }
+
+
 
 /* ====== MODAL SCORE ====== */
+
+
 .modal {
+
+
   display: none;
+
+
   position: fixed;
+
+
   inset: 0;
+
+
   background: rgba(0,0,0,0.5);
+
+
   backdrop-filter: blur(4px);
+
+
   justify-content: center;
+
+
   align-items: center;
+
+
   z-index: 2000;
+
+
 }
+
+
 
 .modalContent {
+
+
   background: white;
+
+
   padding: 30px 32px;
+
+
   border-radius: 20px;
+
+
   display: flex;
+
+
   flex-direction: column;
+
+
   gap: 15px;
+
+
   min-width: 340px;
+
+
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+
 }
+
+
 
 .modalContent h2 { font-size: 26px; font-weight: bold; color: #1a3040; margin: 0; }
+
+
 .modalContent p { color: #555; font-size: 15px; margin: 5px 0 0 0; font-weight: bold; }
 
+
+
 .choixGagnantModal {
+
+
   display: flex;
+
+
   gap: 12px;
+
+
   justify-content: center;
+
+
   margin-bottom: 5px;
+
+
 }
+
+
 
 .choixGagnantModal button {
+
+
   flex: 1;
+
+
   height: 45px;
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 800;
+
+
   font-size: 16px;
+
+
   border: 2px solid #ddd;
+
+
   border-radius: 10px;
+
+
   cursor: pointer;
-  background-color: #f8f9fa; 
+
+
+  background-color: #f8f9fa;
+
+
   color: #333;
+
+
   transition: all 0.2s;
+
+
 }
 
-#modalSelectMilo.selected { 
-  background-color: lightcoral !important; 
-  color: white !important; 
-  border-color: lightcoral !important; 
+
+
+#modalSelectMilo.selected {
+
+
+  background-color: #E30B5D !important;
+
+
+  color: white !important;
+
+
+  border-color: #E30B5D !important;
+
+
 }
-#modalSelectGuillaume.selected { 
-  background-color: rgb(77, 176, 77) !important; 
-  color: white !important; 
-  border-color: rgb(77, 176, 77) !important; 
+
+
+#modalSelectGuillaume.selected {
+
+
+  background-color: rgb(77, 176, 77) !important;
+
+
+  color: white !important;
+
+
+  border-color: rgb(77, 176, 77) !important;
+
+
 }
+
+
 
 .inputWrapper input {
+
+
   width: 90%;
+
+
   border: 2px solid #ddd;
+
+
   border-radius: 10px;
+
+
   padding: 12px 16px;
+
+
   font-size: 20px;
+
+
   font-weight: bold;
+
+
   outline: none;
+
+
   text-align: center;
+
+
 }
+
+
 .inputWrapper input:focus { border-color: #65bed0; }
 
+
+
 /* Glissière Match en cours */
+
+
 .toggleContainer {
+
+
   display: flex;
+
+
   align-items: center;
+
+
   justify-content: space-between;
+
+
   background: #f5f7f8;
+
+
   padding: 10px 16px;
+
+
   border-radius: 12px;
+
+
 }
+
+
 
 .toggleLabel { font-size: 15px; font-weight: 800; color: #555; }
+
+
 .switch { position: relative; display: inline-block; width: 64px; height: 32px; }
+
+
 .switch input { opacity: 0; width: 0; height: 0; }
 
+
+
 .slider {
+
+
   position: absolute;
+
+
   cursor: pointer;
+
+
   inset: 0;
-  background-color: #143241; 
+
+
+  background-color: #143241;
+
+
   transition: .3s;
+
+
   border-radius: 34px;
+
+
 }
+
+
 
 .slider::before {
+
+
   position: absolute;
+
+
   content: "";
+
+
   height: 24px;
+
+
   width: 24px;
+
+
   left: 4px;
+
+
   bottom: 4px;
+
+
   background-color: white;
+
+
   transition: .3s;
+
+
   border-radius: 50%;
+
+
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+
 }
+
+
 
 .switch input:checked + .slider::before { transform: translateX(32px); }
-.switch input:checked + .slider { background-color: #ff9f43; } 
+
+
+.switch input:checked + .slider { background-color: #ff9f43; }
+
+
 
 /* BOUTONS ACTIONS */
+
+
 .modalButtons { display: flex; gap: 10px; margin-top: 5px; }
+
+
 .modalButtons button {
+
+
   flex: 1; padding: 13px; border: none; border-radius: 12px;
+
+
   font-size: 17px; font-weight: bold; cursor: pointer;
+
+
 }
+
+
 
 #valider { background: lightgreen; color: #333; }
+
+
 #fermer { background: pink; color: #333; }
+
+
 #valider:hover { background-color: green; color: white; }
+
+
 #fermer:hover { background-color: red; color: white; }
 
+
+
 /* FLAMMES */
+
+
 .streak-flame { position: absolute; bottom: -25px; right: -25px; width: 72px; height: 82px; z-index: 10; pointer-events: none; }
+
+
 .streak-flame-guillaume { right: auto; left: -22px; }
+
+
 .flame-svg { width: 100%; height: 100%; overflow: visible; }
 
+
+
 @keyframes flameJiggle {
+
+
   0% { transform: rotate(-4deg) scale(1); }
+
+
   50% { transform: rotate(1deg) scale(1.04); }
+
+
   100% { transform: rotate(4deg) scale(1); }
+
+
 }
+
+
 
 @keyframes slideIn {
+
+
   from { opacity: 0; transform: translateY(8px); }
+
+
   to { opacity: 1; transform: translateY(0); }
+
+
 }
+
+
 
 @keyframes popupFade {
+
+
   from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+
+
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+
 }
+
+
 
 .titre, .bouton, .score {
+
+
   transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+
+
   will-change: opacity, transform;
+
+
 }
+
+
 
 .delete-match-btn{
+
+
   position: absolute;
+
+
   background-color: red;
+
+
   border-radius: 10px;
+
+
   font-size: 26px;
+
+
   right: 10px;
+
+
   top: 50%;
+
+
   transform: translateY(-50%);
+
+
   border-color: lightgrey;
+
+
 }
+
+
 
 .delete-match-btn:hover{
+
+
   cursor: pointer;
+
+
   background-color: darkred;
+
+
   border-color: #7ce4f9;
+
+
 }
+
+
 
 /* 1. Le fond qui couvre tout l'écran */
+
+
 #customConfirm {
+
+
   backdrop-filter: blur(5px);
-  display: none; 
+
+
+  display: none;
+
+
   position: fixed;
+
+
   top: 0;
+
+
   left: 0;
+
+
   width: 100%;
+
+
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); 
-  z-index: 9999; 
+
+
+  background: rgba(0, 0, 0, 0.6);
+
+
+  z-index: 9999;
+
+
   justify-content: center;
+
+
   align-items: center;
+
+
 }
+
+
 /* 2. La boîte blanche (le cadre au milieu) */
+
+
 .confirm-content {
+
+
   background-color: lightblue;
+
+
   width: 320px;
+
+
   height: 180px;
+
+
   border-radius: 20px;
+
+
   display: flex;
+
+
   flex-direction: column;
+
+
   justify-content: center;
+
+
   align-items: center;
-  gap: 15px; 
+
+
+  gap: 15px;
+
+
 }
+
+
 
 /* 3. Le texte de la question */
+
+
 .confirm-content p {
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: bold;
+
+
   color: #8A1921;
+
+
   font-size: 20px;
-  margin-bottom: 20px; 
+
+
+  margin-bottom: 20px;
+
+
 }
+
+
 
 /* 5. Le bouton Annuler */
+
+
 #confirmCancel {
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 600;
+
+
   background-color: rgb(110, 108, 108);
+
+
   border-radius: 10px;
+
+
   width: 110px;  
+
+
   height: 50px;  
+
+
   color: white;
+
+
   font-size: 15px;
+
+
   text-align: center;
+
+
   border: none;  
+
+
   cursor: pointer;
+
+
 }
+
+
 
 /* 6. Le bouton Supprimer */
+
+
 #confirmConfirm {
+
+
   font-family: 'Nunito', sans-serif;
+
+
   font-weight: 600;
+
+
   background-color: rgb(255, 53, 53);
+
+
   border-radius: 10px;
+
+
   width: 110px;  
+
+
   height: 50px;  
+
+
   color: white;
+
+
   font-size: 15px;
+
+
   text-align: center;
+
+
   border: none;  
+
+
   cursor: pointer;
+
+
 }
+
+
 
 /* 4. Le conteneur des deux boutons */
+
+
 .confirm-buttons {
+
+
   display: flex;
+
+
   justify-content: center;
-  gap: 15px; 
+
+
+  gap: 15px;
+
+
 }
+
+
 
 .imagetrophees{
+
+
   width: 50px;
+
+
   margin: 10px 10px 0px 10px;
+
+
   border-radius: 5px;
+
+
 }
+
+
 
 .bouton-trophees{
+
+
   z-index: 9999;
+
+
   position: fixed;
+
+
   bottom: 50px;
+
+
   left: 50px;
+
+
   background-color: #8A1921;
+
+
   border-radius: 15px;
+
+
   text-decoration: none;
+
+
   transition: opacity 0.3s ease, visibility 0.3s ease;
+
+
 }
+
+
 
 .textetrophees{
+
+
   font-size: 50px;
+
+
   margin: 0px 10px 10px 10px;
+
+
 }
+
+
 
 #trophees {
-  margin-top: 60px;
-  /* On passe de 50% à 68% pour faire monter le noir pile sous la bande orange */
- 
-  margin-bottom: -80px;      
-  padding-bottom: 120px;     
+
+  position: relative;
+
 }
 
-/* Force la grande bande orange à se caler pile au niveau du texte */
+
+
+/* Grande bande du haut ⬇️ */
+
+
 #trophees::before {
+
+
   top: 52px !important;
-  transform: translateY(-50%) rotate(-2.5deg) !important;
+
+
+  transform: translateY(-50%) rotate(-1deg) !important;
+
+
 }
 
-/* Force la petite bande orange à suivre juste en dessous */
+
+
+/* Petite bande du bas ⬇️ */
+
+
 #trophees::after {
-  top: 78px !important; 
-  transform: translateY(-50%) rotate(-2deg) !important;
+
+
+  top: 78px !important;
+
+  transform: translateY(-50%);
+
+
 }
 
 .zone-sombre {
+
   position: relative;
 
 }
 
+
 .zone-sombre::before {
-  width: 500%;
+
+  content: '';
+
+  position: absolute;
+
+ 
+
+  /* Centrage sur TOUTE la largeur de l'écran */
+
+  left: 50%;
+
+  width: 100vw;
+
+  transform: translateX(-50%) translateY(80px);
+
+ 
+
+  /* Placement vertical (ex: couvre toute la hauteur du bloc) */
+
+  top: 0;
+
+  height: 103%;
+
+ 
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background-color: rgba(0, 0, 0, 0.366);
+
+} 
+
+.zone-sombre-trophees {
+  position: relative;
+}
+
+.zone-sombre-trophees::before {
   content: '';
   position: absolute;
-  inset: -20px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%) translateY(30px);
+  
+  /* Démarre sous la bande orange et descend jusqu'au tout bas */
+  top: 50px;
+  bottom: 0;
+  
   z-index: -1;
   pointer-events: none;
-  backdrop-filter: brightness(50%);
-  transform: rotate(-2deg)
-translateY(40px)
-translateX(-400px);
-  transform-origin: center;
+  background-color: black; /* Ton fond rouge plein écran */
+}
