@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const historique = document.getElementById("historique");
   const scoreMiloEl = document.getElementById("scoreMilo");
   const scoreGuillaumeEl = document.getElementById("scoreGuillaume");
-  
+
   const mainActionBtn = document.getElementById("mainActionBtn");
   const popupMatch = document.getElementById("popupMatch");
   const btnMilo = document.getElementById("btnMilo");
@@ -83,19 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
   /* COMPORTEMENT DU GROS BOUTON PRINCIPAL */
   mainActionBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    
+
     if (matchEnCoursGlobal) {
       réinitialiserSelectionModal(); 
-      
+
       scoreInput.value = matchEnCoursGlobal.score || "";
-      
+
       enCoursToggle.checked = false; 
       toggleRow.style.display = "flex"; 
       gagnantRow.style.display = "block"; 
       scoreLabel.textContent = "Indique le score final :";
-      
+
       modalTitle.textContent = "Terminer / Modifier le match";
-      
+
       if (matchEnCoursGlobal.gagnant === "joueur1" || matchEnCoursGlobal.gagnant === "Milo") {
         joueurSelectionneModal = "joueur1";
         modalSelectMilo.classList.add("selected");
@@ -120,14 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
   btnMatchEnCours.addEventListener("click", () => {
     popupMatch.style.display = "none";
     réinitialiserSelectionModal();
-    
+
     scoreInput.value = "0-0";
-    
+
     enCoursToggle.checked = true;
     toggleRow.style.display = "flex";
     gagnantRow.style.display = "none"; 
     scoreLabel.textContent = "Indique le score actuel :";
-    
+
     modalTitle.textContent = "Nouveau match en direct";
     modal.style.display = "flex";
   });
@@ -140,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
     modalSelectMilo.classList.add("selected");
     scoreInput.value = "";
     enCoursToggle.checked = false; 
-    
+
     toggleRow.style.display = "none"; 
     gagnantRow.style.display = "none"; 
     scoreLabel.textContent = "Indique le score final :";
-    
+
     modalTitle.textContent = "Entrer le score pour Milo";
     modal.style.display = "flex";
   });
@@ -157,11 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
     modalSelectGuillaume.classList.add("selected");
     scoreInput.value = "";
     enCoursToggle.checked = false; 
-    
+
     toggleRow.style.display = "none"; 
     gagnantRow.style.display = "none"; 
     scoreLabel.textContent = "Indique le score final :";
-    
+
     modalTitle.textContent = "Entrer le score pour Guillaume";
     modal.style.display = "flex";
   });
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     if (matchsFinis.length === 0) return { joueur: null, streak: 0 };
-    
+
     const dernierGagnant = matchsFinis[0].gagnant;
     let streak = 1;
 
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
     snap.forEach(docSnap => {
       let d = docSnap.data();
       d.id = docSnap.id; 
-      
+
       if (d.enCours === undefined) d.enCours = false;
 
       matchs.push(d);
@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     matchs.forEach(d => {
       const li = document.createElement("li");
-      
+
       const textSpan = document.createElement("span");
       if (d.enCours) {
         textSpan.textContent = `⏳ Match en cours (${d.score || "0-0"})`;
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = "🗑️";
       deleteBtn.classList.add("delete-match-btn");
-      
+
       deleteBtn.addEventListener("click", (e) => {
         e.stopPropagation();
 
@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
           chargerMatchs();
         };
       });
-      
+
       li.appendChild(deleteBtn);
       historique.appendChild(li);
     });
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   chargerMatchs();
 
-  /* ANIMATION SCROLL */
+  /* ANIMATION SCROLL SECTIONS PRINCIPALES */
   const sectionTitre = document.querySelector(".titre");
   const sectionBouton = document.querySelector(".bouton");
   const sectionScore = document.querySelector(".score");
@@ -363,6 +363,26 @@ document.addEventListener("DOMContentLoaded", () => {
         element.style.pointerEvents = opacite === 0 ? "none" : "auto";
       }
     });
+  });
+
+  /* GESTION VISIBILITÉ DU BOUTON TROPHEES AU SCROLL */
+  const boutonTrophees = document.querySelector(".bouton-trophees");
+  const sectionTrophees = document.getElementById("trophees");
+
+  window.addEventListener("scroll", () => {
+    if (!boutonTrophees || !sectionTrophees) return;
+
+    // Récupère la distance entre le titre "trophées" et le haut de la fenêtre
+    const positionTrophees = sectionTrophees.getBoundingClientRect().top;
+
+    // Si le titre approche de l'écran (moins de 800px du haut), on cache le bouton
+    if (positionTrophees < 2200) {
+      boutonTrophees.style.opacity = "0";
+      boutonTrophees.style.visibility = "hidden";
+    } else {
+      boutonTrophees.style.opacity = "1";
+      boutonTrophees.style.visibility = "visible";
+    }
   });
 
 });
